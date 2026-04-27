@@ -24,7 +24,7 @@ export default function NoticeBoard() {
 
         {/* Ticker */}
         <div className="flex-1 overflow-hidden relative">
-          <div className="ticker-animate whitespace-nowrap inline-block">
+          <div className="whitespace-nowrap inline-block animate-ticker">
             {notices.map((n, i) => (
               <span key={i} className="text-sm font-body text-blue-100 mx-8">
                 {n}
