@@ -66,7 +66,6 @@ export default function Navbar() {
             <FiPhone className="w-4 h-4" />
             9813279231
           </a>
-          
         </div>
 
         {/* Mobile menu button */}
@@ -93,7 +92,18 @@ export default function Navbar() {
                 <a
                   key={l.href}
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+
+                    const id = l.href.replace("#", "");
+                    const el = document.getElementById(id);
+
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                    }
+
+                    setTimeout(() => setOpen(false), 200);
+                  }}
                   className="text-gray-700 font-body font-semibold py-2 border-b border-gray-50"
                 >
                   {l.label}

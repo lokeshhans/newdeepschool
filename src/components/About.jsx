@@ -36,7 +36,7 @@ export default function AboutPro() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
-    <section id="about" className="py-24 bg-gradient-to-b from-white to-gray-50" ref={ref}>
+    <section id="about" className="py-24 bg-gradient-to-b from-white to-gray-50 " ref={ref}>
       <div className="max-w-7xl mx-auto px-4">
 
         <div className="grid lg:grid-cols-2 gap-14 items-center">
