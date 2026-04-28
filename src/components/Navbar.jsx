@@ -22,6 +22,22 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  const handleMobileNavClick = (e, href) => {
+    e.preventDefault();
+    setOpen(false); // 1. Close menu first
+    setTimeout(() => {
+      // 2. Scroll after animation settles (300ms matches Framer exit duration)
+      const id = href.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        const yOffset = -90;
+        const y =
+          el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }, 300);
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -34,7 +50,7 @@ export default function Navbar() {
           <img
             src={logo}
             alt="New Deep Public School Logo"
-            className="w-14 h-14 object-contain "
+            className="w-14 h-14 object-contain"
           />
           <div className="leading-tight">
             <p className="font-heading font-bold text-navy-900 text-lg md:text-base">
@@ -85,6 +101,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
             className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
           >
             <div className="px-4 py-4 flex flex-col gap-3">
@@ -92,18 +109,7 @@ export default function Navbar() {
                 <a
                   key={l.href}
                   href={l.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-
-                    const id = l.href.replace("#", "");
-                    const el = document.getElementById(id);
-
-                    if (el) {
-                      el.scrollIntoView({ behavior: "smooth" });
-                    }
-
-                    setTimeout(() => setOpen(false), 200);
-                  }}
+                  onClick={(e) => handleMobileNavClick(e, l.href)}
                   className="text-gray-700 font-body font-semibold py-2 border-b border-gray-50"
                 >
                   {l.label}
