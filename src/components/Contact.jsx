@@ -117,7 +117,7 @@ Mujhe admission ke baare mein jaankari chahiye.`;
             <div className="rounded-2xl overflow-hidden border border-gray-200 h-48">
               <iframe
                 title="School Location"
-                src="https://maps.google.com/maps?q=Palwal,Haryana&output=embed&z=13"
+                src="https://www.google.com/maps?q=New+Deep+Public+School+Palwal&z=17&output=embed  "
                 className="w-full h-full"
                 style={{ border: 0 }}
                 allowFullScreen=""
