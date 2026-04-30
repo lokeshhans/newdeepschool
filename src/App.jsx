@@ -15,6 +15,7 @@ import FloatingWhatsApp from './components/FloatingWhatsApp'
 import StickyApply from './components/StickyApply'
 import PrincipalSection from './components/PrincipalSection'
 import AdmissionBanner from './components/AddmissionBanner'
+import ResultSection from './components/ResultSection'
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
 
       {/* SOCIAL PROOF */}
       <Testimonials />
+      <ResultSection />
 
       {/* CONVERSION */}
       <AdmissionBanner />
