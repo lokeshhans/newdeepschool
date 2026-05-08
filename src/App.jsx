@@ -16,7 +16,7 @@ import StickyApply from './components/StickyApply'
 import PrincipalSection from './components/PrincipalSection'
 import AdmissionBanner from './components/AddmissionBanner'
 import ResultSection from './components/ResultSection'
-import ResultShowcase from './components/ResultShowCase'
+import ResultShowcase from './components/ResultShowcase'
 
 function App() {
   return (
