@@ -97,38 +97,96 @@ export default function ResultSection() {
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.4 }}
+              exit={{ opacity: 0, x: -60 }}
+              transition={{ duration: 0.45 }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               onDragEnd={(e, info) => {
                 if (info.offset.x < -50) next();
                 if (info.offset.x > 50) prev();
               }}
-              className="bg-gray-50 rounded-3xl p-6 md:p-10 shadow-lg w-full max-w-md"
+              className="bg-white border border-gray-100 rounded-[2rem] overflow-hidden shadow-2xl w-full max-w-4xl"
             >
-              <img
-                src={student.img}
-                alt={student.name}
-                loading="lazy"
-                decoding="async"
-                fetchPriority={index === 0 ? "high" : "low"}
-                className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 mx-auto rounded-full object-cover mb-5 border-4 border-amber-400 transition-all duration-300"
-              />
+              <div className="flex flex-col md:flex-row items-center">
+                {/* LEFT IMAGE */}
+                <div className="relative w-full md:w-[42%] h-[320px] md:h-[420px] overflow-hidden bg-gray-100">
+                  <img
+                    src={student.img}
+                    alt={student.name}
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority={index === 0 ? "high" : "low"}
+                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+                  />
 
-              <h3 className="text-xl font-bold text-navy-900">
-                {student.name}
-              </h3>
+                  {/* Floating Badge */}
+                  <div className="absolute top-4 left-4 bg-amber-400 text-black px-4 py-2 rounded-xl shadow-xl">
+                    <p className="text-xs font-bold uppercase tracking-wider">
+                      Board Result
+                    </p>
+                  </div>
+                </div>
 
-              <p className="text-gray-500 mt-2 text-sm">
-                Marks: <b>{student.marks}</b>
-              </p>
+                {/* RIGHT CONTENT */}
+                <div className="flex-1 p-8 md:p-10 text-left">
+                  <span className="inline-block bg-green-100 text-green-700 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                    Session 2024–25
+                  </span>
 
-              <p className="text-green-600 font-bold text-lg mt-1">
-                {student.percent}
-              </p>
+                  <h3 className="text-3xl md:text-4xl font-black text-navy-900 leading-tight">
+                    {student.name}
+                  </h3>
+
+                  <div className="mt-5 space-y-3">
+                    <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                      <p className="text-gray-500 text-sm">Obtained Marks</p>
+
+                      <p className="text-xl font-bold text-gray-900">
+                        {student.marks}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                      <p className="text-gray-500 text-sm">Percentage</p>
+
+                      <p className="text-2xl font-black text-green-600">
+                        {student.percent}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center justify-between pb-2">
+                      <p className="text-gray-500 text-sm">Performance</p>
+
+                      <p className="text-amber-500 font-bold">⭐ Excellent</p>
+                    </div>
+                  </div>
+
+                  {/* Quote */}
+                  <div className="mt-6 bg-gray-50 rounded-2xl p-5 border border-gray-100">
+                    <p className="text-sm text-gray-600 leading-relaxed italic">
+                      “Hard work, discipline, and teacher guidance helped me
+                      achieve excellent results at New Deep Public School.”
+                    </p>
+                  </div>
+
+                  {/* Bottom */}
+                  <div className="flex flex-wrap gap-3 mt-7">
+                    <div className="bg-amber-50 text-amber-700 px-4 py-2 rounded-xl text-sm font-semibold">
+                      CBSE Pattern
+                    </div>
+
+                    <div className="bg-blue-50 text-blue-700 px-4 py-2 rounded-xl text-sm font-semibold">
+                      Merit Holder
+                    </div>
+
+                    <div className="bg-green-50 text-green-700 px-4 py-2 rounded-xl text-sm font-semibold">
+                      100% Result
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </AnimatePresence>
 

@@ -1,178 +1,271 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import principal from "../assets/principal.webp"
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import principal from "../assets/principal.webp";
 
 const reasons = [
   {
-    icon: '🛡️',
-    title: 'Child Safety First',
-    desc: 'CCTV cameras, secured gates, and verified staff. Har parent ki sabse badi tension — safety — hum seriously lete hain.',
-    proof: '✔ Monitored campus daily',
+    icon: "🛡️",
+    title: "Child Safety First",
+    desc: "CCTV surveillance, secured campus, verified staff, and disciplined environment. Parents trust us because safety comes before everything.",
+    proof: "24×7 monitored campus",
     highlight: true,
   },
   {
-    icon: '👁️',
-    title: 'Personal Attention',
-    desc: 'Limited students per class. Har bachche par dhyaan diya jata hai — koi ignore nahi hota.',
-    proof: '✔ Small class strength',
+    icon: "👨‍🏫",
+    title: "Experienced Teachers",
+    desc: "Teachers with years of classroom experience who focus on concepts, discipline, and personal mentoring.",
+    proof: "Qualified & supportive faculty",
   },
   {
-    icon: '🎓',
-    title: 'Experienced Teachers',
-    desc: 'Teachers jo sirf padhaate nahi — samjhate hain. Saalon ka experience aur patience.',
-    proof: '✔ Long-term faculty',
+    icon: "🎯",
+    title: "Personal Attention",
+    desc: "Every child gets guidance, feedback, and support. No student is ignored in the classroom.",
+    proof: "Small classroom strength",
   },
   {
-    icon: '💰',
-    title: 'Affordable Fees',
-    desc: 'Quality education jo middle-class families afford kar sake. No hidden charges.',
-    proof: '✔ Transparent structure',
+    icon: "📚",
+    title: "Strong Academic Focus",
+    desc: "Regular tests, board preparation, doubt sessions, and structured study plans help students perform better.",
+    proof: "Excellent board results",
     highlight: true,
   },
   {
-    icon: '📍',
-    title: 'Located in Palwal',
-    desc: 'School paas mein hone se time bachta hai, bachcha safe rehta hai, aur routine stable hota hai.',
-    proof: '✔ Easy daily commute',
+    icon: "💰",
+    title: "Affordable Education",
+    desc: "Quality education designed for middle-class families without unnecessary financial burden.",
+    proof: "Transparent fee structure",
   },
   {
-    icon: '📞',
-    title: 'Responsive School',
-    desc: 'Call karo — response milega. Parents ke liye communication open hai.',
-    proof: '✔ Fast response',
+    icon: "📍",
+    title: "Located in Palwal",
+    desc: "Convenient location means safer travel, less stress, and more time for studies and family.",
+    proof: "Easy daily commute",
   },
-]
+];
+
+const stats = [
+  { number: "25+", label: "Years of Trust" },
+  { number: "100%", label: "Board Result Focus" },
+  { number: "30+", label: "Qualified Teachers" },
+  { number: "900+", label: "Successful Students" },
+];
 
 export default function WhyChooseUsPro() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.08,
+  });
 
   return (
-    <section id="why" className="py-24 bg-gradient-to-b from-gray-50 to-white" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4">
+    <section
+      id="why"
+      className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-b from-[#f8fafc] via-white to-[#fffdf7]"
+      ref={ref}
+    >
+      {/* Background blur */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-amber-100 rounded-full blur-3xl opacity-40"></div>
+
+      <div className="relative max-w-7xl mx-auto px-4">
 
         {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="text-amber-600 font-semibold text-sm uppercase tracking-widest">
-            Why Parents Choose Us
+          <span className="inline-block bg-amber-100 text-amber-700 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[3px]">
+            Why Parents Trust Us
           </span>
 
-          <h2 className="mt-3 text-4xl font-bold text-gray-900">
-            Real Reasons Parents Trust Us <br />
-            <span className="text-amber-500">With Their Child</span>
+          <h2 className="mt-6 text-4xl md:text-6xl font-black text-gray-900 leading-tight">
+            More Than A School.
+            <span className="block text-amber-500">
+              A Trusted Future.
+            </span>
           </h2>
 
-          <p className="mt-4 text-gray-600 max-w-xl mx-auto">
-            Ye sirf claims nahi hain — ye woh reasons hain jo parents khud batate hain.
+          <p className="mt-6 text-gray-600 text-base md:text-lg leading-relaxed">
+            New Deep Public School is trusted by families across Palwal
+            because we focus on discipline, academics, safety, and real
+            student growth.
           </p>
         </motion.div>
 
-        {/* CARDS */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reasons.map((r, i) => (
-            <motion.div
-              key={r.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.08 }}
-              whileHover={{ y: -8 }}
-              className={`group relative rounded-3xl p-6 border transition-all duration-300 ${
-                r.highlight
-                  ? 'bg-navy-900 text-white border-navy-700 shadow-xl'
-                  : 'bg-white border-gray-200 hover:shadow-lg'
-              }`}
-            >
-              {/* Icon */}
-              <div className="text-4xl mb-4">{r.icon}</div>
-
-              {/* Title */}
-              <h3 className={`font-bold text-lg mb-2 ${r.highlight ? 'text-white' : 'text-gray-900'}`}>
-                {r.title}
-              </h3>
-
-              {/* Desc */}
-              <p className={`text-sm leading-relaxed mb-3 ${
-                r.highlight ? 'text-blue-200' : 'text-gray-600'
-              }`}>
-                {r.desc}
-              </p>
-
-              {/* Proof line */}
-              <p className={`text-xs font-semibold ${
-                r.highlight ? 'text-amber-300' : 'text-green-600'
-              }`}>
-                {r.proof}
-              </p>
-
-              {/* hover underline */}
-              <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-amber-500 group-hover:w-full transition-all duration-300 rounded-b-3xl"></div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* HUMAN TRUST STRIP */}
+        {/* STATS */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="mt-20 bg-white border rounded-3xl p-8 shadow-md flex flex-col md:flex-row items-center gap-6"
+          transition={{ delay: 0.1 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-20"
         >
-          <img
-            src={principal}
-            alt="Principal"
-            className="w-24 h-24 rounded-full object-top shadow"
-          />
+          {stats.map((item, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-3xl border border-gray-100 p-6 text-center shadow-sm hover:shadow-xl transition-all duration-300"
+            >
+              <h3 className="text-3xl md:text-4xl font-black text-amber-500">
+                {item.number}
+              </h3>
 
-          <div>
-            <p className="text-gray-700 text-sm leading-relaxed">
-              “Hum sirf padhai nahi karwate — hum bachchon ko samajhte hain. Har bachcha important hai.”
-            </p>
-            <p className="text-gray-500 text-xs mt-2">
-              — Principal, New Deep Public School
-            </p>
-          </div>
+              <p className="text-sm text-gray-600 mt-2">
+                {item.label}
+              </p>
+            </div>
+          ))}
         </motion.div>
 
-        {/* CTA SECTION */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ delay: 0.4 }}
-          className="mt-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-3xl p-10 text-center shadow-xl"
-        >
-          <h3 className="text-white text-3xl font-bold mb-3">
-            Admission Open 2026–27
-          </h3>
+        {/* MAIN CONTENT */}
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
 
-          <p className="text-amber-100 mb-6 max-w-lg mx-auto">
-            Seats limited hain. Abhi enquiry karein — kal wait karna pad sakta hai.
-          </p>
+          {/* LEFT */}
+          <div className="grid sm:grid-cols-2 gap-6">
+            {reasons.map((r, i) => (
+              <motion.div
+                key={r.title}
+                initial={{ opacity: 0, y: 40 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ y: -8 }}
+                className={`group rounded-[2rem] p-7 border relative overflow-hidden transition-all duration-300 ${
+                  r.highlight
+                    ? "bg-navy-900 border-navy-800 text-white shadow-2xl"
+                    : "bg-white border-gray-100 hover:shadow-xl"
+                }`}
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="tel:9813279231"
-              className="bg-white text-orange-600 px-8 py-3 rounded-xl font-bold shadow hover:bg-gray-100 transition"
-            >
-              📞 Call Now
-            </a>
+                <div className="relative z-10">
+                  <div className="text-5xl mb-5">
+                    {r.icon}
+                  </div>
 
-            <a
-              href="https://wa.me/919813279231"
-              className="bg-[#25D366] text-white px-8 py-3 rounded-xl font-bold shadow hover:bg-[#20ba5a] transition"
-            >
-              💬 WhatsApp
-            </a>
+                  <h3 className={`text-xl font-bold mb-3 ${
+                    r.highlight ? "text-white" : "text-gray-900"
+                  }`}>
+                    {r.title}
+                  </h3>
+
+                  <p className={`text-sm leading-relaxed ${
+                    r.highlight
+                      ? "text-blue-100"
+                      : "text-gray-600"
+                  }`}>
+                    {r.desc}
+                  </p>
+
+                  <div className={`mt-5 inline-flex items-center px-4 py-2 rounded-full text-xs font-bold ${
+                    r.highlight
+                      ? "bg-white/10 text-amber-300"
+                      : "bg-green-50 text-green-700"
+                  }`}>
+                    ✔ {r.proof}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
-          <p className="text-xs text-white/80 mt-4">
-            * Limited seats • First come first serve
-          </p>
-        </motion.div>
+          {/* RIGHT SIDE */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="sticky top-28"
+          >
+            <div className="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-100">
+
+              {/* IMAGE */}
+              <div className="relative">
+                <img
+                  src={principal}
+                  alt="Principal"
+                  loading="lazy"
+                  className="w-full h-[420px] object-cover object-top"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+
+                <div className="absolute bottom-6 left-6">
+                  <p className="text-white text-sm uppercase tracking-widest">
+                    Principal Message
+                  </p>
+
+                  <h3 className="text-3xl font-black text-white mt-1">
+                    M. R. Chauhan
+                  </h3>
+                </div>
+              </div>
+
+              {/* CONTENT */}
+              <div className="p-8">
+                <p className="text-gray-700 leading-relaxed">
+                  “Education is not only about marks. We believe in
+                  discipline, confidence, values, and preparing students
+                  for real life challenges.”
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+
+                  <a
+                    href="tel:9813279231"
+                    className="flex-1 min-w-[180px] bg-amber-500 hover:bg-amber-600 text-white text-center py-4 rounded-2xl font-bold transition-all duration-300 shadow-lg"
+                  >
+                    📞 Call Now
+                  </a>
+
+                  <a
+                    href="https://wa.me/919813279231"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 min-w-[180px] bg-[#25D366] hover:bg-[#20ba5a] text-white text-center py-4 rounded-2xl font-bold transition-all duration-300 shadow-lg"
+                  >
+                    💬 WhatsApp
+                  </a>
+
+                </div>
+
+                {/* Mini Trust */}
+                <div className="mt-8 grid grid-cols-3 gap-4 text-center">
+
+                  <div className="bg-gray-50 rounded-2xl p-4">
+                    <p className="text-2xl font-black text-amber-500">
+                      100%
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Result Focus
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-50 rounded-2xl p-4">
+                    <p className="text-2xl font-black text-green-600">
+                      Safe
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Campus
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-50 rounded-2xl p-4">
+                    <p className="text-2xl font-black text-blue-600">
+                      CBSE
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Pattern
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </motion.div>
+
+        </div>
 
       </div>
     </section>
-  )
+  );
 }

@@ -16,6 +16,7 @@ import StickyApply from './components/StickyApply'
 import PrincipalSection from './components/PrincipalSection'
 import AdmissionBanner from './components/AddmissionBanner'
 import ResultSection from './components/ResultSection'
+import ResultShowcase from './components/ResultShowCase'
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
 
       {/* SOCIAL PROOF */}
       <Testimonials />
+      <ResultShowcase/>
       <ResultSection />
 
       {/* CONVERSION */}
