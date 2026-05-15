@@ -19,7 +19,7 @@ export default function PrincipalSection() {
             <img
               src={principal}
               alt="Principal"
-              className="rounded-3xl shadow-lg w-full object-top h-[420px]"
+              className="rounded-3xl shadow-lg w-full object-top h-[620px]"
             />
 
             {/* Badge */}

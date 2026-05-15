@@ -182,7 +182,7 @@ export default function WhyChooseUsPro() {
                   src={principal}
                   alt="Principal"
                   loading="lazy"
-                  className="w-full h-[420px] object-cover object-top"
+                  className="w-full h-[620px] object-cover object-top"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
